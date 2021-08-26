@@ -12,7 +12,4 @@ public class TermSolution {
         }
         return answer;
     }
-    public void main(String[] args){
-        solution(2, 5);
-    }
 }
