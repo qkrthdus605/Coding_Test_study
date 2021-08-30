@@ -15,3 +15,4 @@ class Watermelon {
         System.out.print(solution(5));
     }
 }
+// 프로그래머스에서는 답이 맞는데 repeat이 왜 적용이 안되는지 아직 해결을 하지 못했다 ㅜㅜ
