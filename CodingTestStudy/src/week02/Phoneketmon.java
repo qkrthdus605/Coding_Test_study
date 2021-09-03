@@ -3,7 +3,7 @@ package week02;
 import java.util.ArrayList;
 
 class Phoneketmon {
-    public int solution(int[] nums) {
+    public int solution(int[] nums) { [3, 1, 2, 3], 2
         int answer = 0;
         int size = (nums.length)/2;
         // 중복되는 폰켓몬의 종류를 담을 배열
