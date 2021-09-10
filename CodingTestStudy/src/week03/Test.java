@@ -15,13 +15,13 @@ public class Test {
         ArrayList<Integer> answer = new ArrayList<Integer>();
 
         for(int i = 0; i < answers.length; i++){
-            if(answers[i] == one[i]){
+            if(answers[i] == one[i%5]){
                 count1++;
             }
-            if(answers[i] == two[i]){
+            if(answers[i] == two[i%8]){
                 count2++;
             }
-            if(answers[i] == three[i]){
+            if(answers[i] == three[i%10]){
                 count3++;
             }
         }
