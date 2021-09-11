@@ -8,12 +8,13 @@ package week03;
 // 문자열을 8개 단위로 잘라 압축했을 때 가장 짧습니다.
 
 public class ZipString {
-    public int solution(String s) {
+    public static int solution(String s) {
 
         int answer = 0;
         int count = 1;
         int[] index = new int[s.length()];
 
+//        비교하는 단위를 기준으로 1 ~ s.length/2까지 for문 돌리기
         // 동일한 문자들이 반복되는 경우
         for(int i = 0; i < s.length(); i++){
             for(int j = 0; j < s.length(); j++) {
@@ -40,5 +41,11 @@ public class ZipString {
 
 
         return answer;
+    }
+
+    public static void main(String args[]) {
+        String s = "aabbaccc";
+
+        System.out.println(solution(s));
     }
 }

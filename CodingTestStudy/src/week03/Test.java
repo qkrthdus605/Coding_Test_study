@@ -3,7 +3,7 @@ package week03;
 import java.util.ArrayList;
 
 public class Test {
-    public ArrayList<Integer> solution(int[] answers) {
+    public static ArrayList<Integer> solution(int[] answers) {
         int[] one = {1, 2, 3, 4, 5};
         int[] two = {2, 1, 2, 3, 2, 4, 2, 5};
         int[] three = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
@@ -39,6 +39,12 @@ public class Test {
         }
         return (answer);
     }
+
+    public static void main(String args[]) {
+        int[] answer = {1, 3, 4, 2, 5};
+
+        System.out.println(solution(answer));
+    }
 }
-// 런타임 에러 발생
+
 
