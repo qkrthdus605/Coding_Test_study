@@ -6,33 +6,27 @@ package week04;
 // 동명이인이 있을 수 있다.
 
 import java.util.Arrays;
-import java.util.List;
 
 public class Running {
     public String solution(String[] participant, String[] completion) {
-        String answer = ""; // 완주하지 못한 선수의 이름을 return
-        List<String> par_list = Arrays.asList(participant);
-        List<String> com_list = Arrays.asList(completion);
-        int count = 0;
+        String answer = "";
 
-        // 알파벳 순으로 선수들 이름을 정렬한다.
-        Arrays.sort(completion);   // ana mislav stanko
-        Arrays.sort(participant);  // ana mislav mislav stanko
+        // 비교를 편하게 하기 위해 정렬을 먼저 해준다.
+        Arrays.sort(participant); // ana mislav mislav stanko
+        Arrays.sort(completion);  // ana mislav stanko
 
-        for(int i = 0; i < completion.length; i++){
-            for(int j = 0; j < participant.length; j++){
-                if(completion[i] == participant[j]){
-                    count++;
-                }
-                if(count == 0){
-                    answer = participant[j];
-                }else if(count > 1){ // 동명이인이 있을 경우
-                    par_list.remove(participant[j+1]);
-                    com_list.remove(completion[i]);
-                }
+        for (int i=0; i<completion.length; i++) {
+            if (!participant[i].equals(completion[i])) { // 참가자와 완주자를 비교했을 때 다른 사람이 있다면 그 사람을 리턴한다
+                answer = participant[i];          // i가 2일때 mislav 와 stanko는 다르기 때문에 participant[2]인 mislav를 리턴한다
+                return answer;
             }
         }
-
-        return answer; // mislav
+        // participant = eden kiki leo
+        // completion = eden kiki
+        // i=0, 1까지 돌면서 다른 사람을 찾지 못했다. 이런 경우에는 참가자 중 마지막 사람이 완주하지 못한 사람이다
+        // for문을 돌면서 찾지 못했다면 마지막 참가자를 리턴한다
+        answer = participant[participant.length - 1];
+        return answer;
     }
 }
+
