@@ -1,47 +1,47 @@
 package week04;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-
-// list : 672 672 672 672 224 224 224 168 168 168 168 96 96 96
-// 672와 168만 최소공배수의 후보가 될 수 o
-// list에서 4개씩 있는 숫자를 뽑고 (count로 개수를 세자 ! )
-// 그 수들 중에 작은 수를 고르면 될 듯?
+// 최소공배수 = 두수의 곱 / 두수의 최대공약수
 
 public class LeastCommonMultiple {
-    public static int solution(int[] arr) { // 3,4,9,16
-        int answer = 0;
-        int mul = 1;
-        int num[] = new int[arr.length + 1];
-        ArrayList<Integer> list = new ArrayList<>(); // 최소공배수 후보를 담은 array
+    public static int Max(int a, int b){
+        // 최대공약수 구하는 함수
+        int max = 0;
+        int compare;
 
-        Arrays.sort(arr);
-
-        // 다 곱한거 : 1728
-        for(int i = 0; i < arr.length; i++){
-            mul = mul * arr[i];
+        if(a > b){
+            compare = b;
+        }else{
+            compare = a;
         }
 
-        for(int i = 0; i < arr.length - 1; i++){
-            num[i] = mul / arr[i]; // 576, 432, 192, 108
-            list.add(num[i]);
-
-            for(int j = 0; j < arr.length; j++) {
-
-                if (num[i] % arr[j] == 0) {
-                        continue;
-                } else {
-                    System.out.println("펑 : " + list.remove(num[i]));
-                    list.remove(num[i]);
-                }
+        // 둘 중 작은 수까지만 for문을 돌린다.
+        // 어차피 약수를 구하는 거니까 많이 돌릴 필요 x
+        // 0으로 나누면 오류가 뜨기 때문에 i는 1부터 시작
+        for(int i = 1; i <= compare; i++){
+            if(a % i == 0 && b % i == 0){
+                max = i;
+                // 두 수 모두 나누어 떨어지게 만드는 i 가 최대공약수
             }
         }
+        return max;
+    }
 
-        System.out.println(list);
+    public static int Min(int a, int b){
+        // 최소공배수 구하는 함수
+        // 두 수의 곱을 두 수의 최대공약수로 나눠준다.
+        int min = (a * b) / Max(a, b);
+        return min;
+    }
 
-        // 최소 공배수 후보를 담은 배열에서의 최소값이 정답
-        answer = Collections.min(list);
+    public static int solution(int[] arr) { // 3,4,9,16
+        // for 문 내에서 처음 최소공배수를 구할 때 들어갈 숫자이므로 arr[0]으로 초기화한다.
+        int answer = arr[0];
+
+        for(int i = 1; i < arr.length; i++){
+            // 두 수의 최소공배수를 구한다.
+            // 그렇게 구해진 최소공배수와 그 다음 수와의 최소공배수를 구한다
+            answer = Min(answer, arr[i]);
+        }
 
         return answer;
     }
