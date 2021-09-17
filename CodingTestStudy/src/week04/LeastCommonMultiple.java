@@ -37,6 +37,11 @@ public class LeastCommonMultiple {
         // for 문 내에서 처음 최소공배수를 구할 때 들어갈 숫자이므로 arr[0]으로 초기화한다.
         int answer = arr[0];
 
+        // arr의 길이가 1일 경우에도 인덱스 에러가 발생하므로 1일때는 처음 요소인 arr[0]을 리턴한다.
+        if(arr.length == 1){
+            return answer;
+        }
+
         for(int i = 1; i < arr.length; i++){
             // 두 수의 최소공배수를 구한다.
             // 그렇게 구해진 최소공배수와 그 다음 수와의 최소공배수를 구한다
